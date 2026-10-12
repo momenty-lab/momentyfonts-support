@@ -1,0 +1,97 @@
+:root {
+  color-scheme: light dark;
+  --canvas: #f1eee3;
+  --ink: #241f18;
+  --accent: #46634f;
+  --line: color-mix(in srgb, var(--ink) 22%, transparent);
+  --muted: color-mix(in srgb, var(--ink) 68%, transparent);
+  --paper: color-mix(in srgb, var(--canvas) 84%, white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #241f18;
+    --ink: #f1eee3;
+    --accent: #9fbea8;
+    --line: color-mix(in srgb, var(--ink) 24%, transparent);
+    --muted: color-mix(in srgb, var(--ink) 72%, transparent);
+    --paper: color-mix(in srgb, var(--canvas) 88%, white);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--canvas); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 0.12em; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--ink);
+  color: var(--canvas);
+  z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+
+header, main, footer {
+  width: min(46rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+header { padding: 2.5rem 0 1.25rem; }
+main { padding-bottom: 3rem; }
+footer { padding: 1.5rem 0 2.5rem; border-top: 1px solid var(--line); color: var(--muted); }
+
+.brand {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.tagline { max-width: 34rem; font-size: 1.15rem; }
+
+nav ul, .link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.card, .language-block {
+  margin: 1.4rem 0;
+  padding: clamp(1.1rem, 4vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+}
+
+h1, h2, h3 { line-height: 1.25; }
+h2 { margin-top: 2.4rem; }
+h3 { margin-top: 1.8rem; }
+p, li { max-width: 42rem; }
+.eyebrow, .meta { color: var(--muted); }
+.eyebrow { margin-bottom: 0.35rem; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.meta { font-size: 0.92rem; }
+.file-name { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+@media (max-width: 36rem) {
+  body { font-size: 16px; }
+  header { padding-top: 1.5rem; }
+}
+
